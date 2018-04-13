@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Find My Word</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+      input{
+        height: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="app">
+    	<form>
+    		<input id="word" type="text" name="word" @input="inputChange" >
+    	</form>
+
+    	<h2>Results</h2>
+
+    	<ul>
+    		<li v-for="(value, key) in results">
+          {{ value }}
+        </li>
+    	</ul>
+    </div>
+
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          results: []
+        },
+        methods: {
+          inputChange : (event) => {
+            // compatible with IE7+, Firefox, Chrome, Opera, Safari
+            var xmlhttp;
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                  let data = JSON.parse(xmlhttp.responseText);
+                  app.results = data.results;
+                }
+            }
+
+            xmlhttp.open("GET", "/query/" + event.target.value, true);
+            xmlhttp.send();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
+
