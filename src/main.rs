@@ -6,14 +6,15 @@ extern crate rocket;
 #[macro_use]
 extern crate rocket_contrib;
 
-use rocket_contrib::Template;
 use rocket_contrib::Json;
+use std::path::Path;
+use rocket::response::NamedFile;
 
 
 /// Home page
 #[get("/")]
-pub fn home() -> Template {
-    Template::render("home", &{})
+pub fn home() -> Option<NamedFile> {
+    NamedFile::open(Path::new("static/home.html")).ok()
 }
 
 /// JSON API
@@ -34,6 +35,5 @@ fn main() {
     rocket::ignite()
         .mount("/", routes![home])
         .mount("/query", routes![query])
-        .attach(Template::fairing())
         .launch();
 }
