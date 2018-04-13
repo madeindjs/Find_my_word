@@ -1,10 +1,18 @@
-let element = document.getElementById('word');
+let input = document.getElementById('word');
+let list = document.getElementById('results');
 
 let callback = (response) => {
-	console.log(response);
+	while (list.firstChild) list.removeChild(list.firstChild);
+
+	let data = JSON.parse(response);
+	data.results.forEach((result) => {
+		let element = document.createElement('li');
+		element.appendChild(document.createTextNode(result));
+		list.appendChild(element);
+	});
 };
 
-element.addEventListener('input',(e) => {
+input.addEventListener('input',(e) => {
 	// compatible with IE7+, Firefox, Chrome, Opera, Safari
 	var xmlhttp;
 	xmlhttp = new XMLHttpRequest();
@@ -14,7 +22,7 @@ element.addEventListener('input',(e) => {
 	    }
 	}
 
-	xmlhttp.open("GET", "/query/" + element.value, true);
+	xmlhttp.open("GET", "/query/" + input.value, true);
 	xmlhttp.send();
 });
 

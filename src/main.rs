@@ -1,7 +1,7 @@
 #![feature(plugin)]
 #![plugin(rocket_codegen)]
-#[macro_use]
-extern crate serde_derive;
+// #[macro_use]
+// extern crate serde_derive;
 extern crate rocket;
 #[macro_use]
 extern crate rocket_contrib;
@@ -13,6 +13,7 @@ use rocket::response::NamedFile;
 
 use rocket_contrib::Json;
 
+/*
 #[derive(Serialize, Deserialize)]
 struct Word {
     title: String,
@@ -27,6 +28,7 @@ impl Word {
         }
     }
 }
+*/
 
 /// Home page
 #[get("/")]
@@ -40,8 +42,9 @@ pub fn query(word: String) -> Option<Json> {
     // todo find word here
     Some(Json(json!({
         "results": [
-            Word::new("First word", "Lorem ipsum"),
-            Word::new(&word, "Lorem ipsum"),
+            "First word",
+            "Lorem ipsum",
+            word
         ]
     })))
 }
