@@ -4,6 +4,9 @@
   <head>
     <title>Find My Word</title>
     <meta charset="utf-8"/>
+    <style type="text/css">
+      strong{font-weight: normal; color: orange;}
+    </style>
   </head>
 
   <body>
@@ -17,8 +20,7 @@
     	<h2>Results</h2>
 
     	<ul>
-    		<li v-for="value in results">
-          {{value}}
+    		<li v-for="value in results" v-html="value">
         </li>
     	</ul>
 
