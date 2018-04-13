@@ -1,0 +1,15 @@
+[package]
+name = "find_my_word"
+version = "0.1.0"
+authors = ["Alexandre Rousseau <contact@rousseau-alexandre.fr>"]
+
+[dependencies]
+rocket = "0.3.8"
+rocket_codegen = "0.3.8"
+serde = "1.0"
+serde_derive = "1.0"
+
+[dependencies.rocket_contrib]
+default-features = false
+features = ["handlebars_templates", "json"]
+version = "0.3.3"
