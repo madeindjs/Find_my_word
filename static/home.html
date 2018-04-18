@@ -26,6 +26,8 @@
 
       <hr>
 
+
+
       <div class="row">
         <div class="col">
           <h2>Results</h2>
@@ -33,24 +35,17 @@
       </div>
 
       <div class="row">
-        <div class="col">
-          <h3>French words</h3>
+        <div class="col" v-for="(words, lang) in results">
+
+          <h3>{{ lang }}</h3>
 
           <ul class="list-unstyled">
-            <li v-for="value in results.french" v-html="value">
+            <li v-for="word in words" v-html="word">
+              {{ word }}
             </li>
           </ul>
         </div>
 
-
-        <div class="col">
-          <h3>English words</h3>
-
-          <ul class="list-unstyled">
-            <li v-for="value in results.english" v-html="value">
-            </li>
-          </ul>
-        </div>
       </div>
 
     </div>
