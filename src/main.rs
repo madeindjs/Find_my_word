@@ -40,7 +40,7 @@ pub fn query(word: String) -> Option<Json> {
                     words.push(str::replace(
                         &line_content,
                         &word,
-                        &format!("<strong>{}</strong>", word),
+                        &format!("<span class=\"text-primary\">{}</span>", word),
                     ));
                     i += 1;
                 }

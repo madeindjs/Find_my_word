@@ -4,25 +4,56 @@
   <head>
     <title>Find My Word</title>
     <meta charset="utf-8"/>
-    <style type="text/css">
-      strong{font-weight: normal; color: orange;}
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.0/litera/bootstrap.min.css">
   </head>
 
   <body>
 
-    <div id="app">
+    <nav class="navbar navbar-light bg-light">
+      <h1 class="navbar-brand">Find My Word</h1>
+    </nav>
 
-    	<form>
-    		<input type="text" name="word" @input="inputChange" />
-    	</form>
+    <div id="app" class="container pt-5">
 
-    	<h2>Results</h2>
+      <div class="row">
+        <div class="col">
+          <form>
+            <input type="text" name="word" class="form-control" @input="inputChange" />
+          </form>
+        </div>
+      </div>
 
-    	<ul>
-    		<li v-for="value in results" v-html="value">
-        </li>
-    	</ul>
+      <hr>
+
+      <div class="row">
+        <div class="col">
+          <h2>Results</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h3>French words</h3>
+
+          <ul class="list-unstyled">
+            <li v-for="value in results" v-html="value">
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="col">
+          <h3>English words</h3>
+
+          <ul>
+            <li v-for="value in results" v-html="value">
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+
 
 
     </div>
